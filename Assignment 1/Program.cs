@@ -76,6 +76,8 @@ namespace DIS_Assignmnet1_Fall_2021
 
         }
 
+
+
         /* 
         <summary>
         You are given a string s of even length. Split this string into two halves of equal lengths, and let a be the first half and b be the second half.
@@ -88,6 +90,8 @@ namespace DIS_Assignmnet1_Fall_2021
         Explanation: a = "bo" and b = "ok". a has 1 vowel and b has 1 vowel. Therefore, they are alike.
         </summary>
         */
+
+        //Start of HalvesAreAlike function
         private static bool HalvesAreAlike(string s)
         {
             try
@@ -121,7 +125,10 @@ namespace DIS_Assignmnet1_Fall_2021
                 throw;
             }
 
-        }
+        } //End of HalvesAreAlike function
+
+
+
 
         /* 
  <summary>
@@ -135,6 +142,8 @@ Explanation: sentence contains at least one of every letter of the English alpha
 </returns> true/false </returns>
 Note: Use of String function (Contains) and hasmap is not allowed, think of other ways how you could the numbers be represented
 */
+
+        //Start of CheckIfPangram function
         private static bool CheckIfPangram(string s)
         {
             try
@@ -180,7 +189,11 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
                 throw;
             }
 
-        }
+        } //End of CheckIfPangram function
+
+
+
+
         /*
         <summary> 
         You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the ith customer has in the jth bank. Return the wealth that the richest customer has.
@@ -195,6 +208,8 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
        Both customers are considered the richest with a wealth of 6 each, so return 6.
        </summary>
         */
+
+        //Start of MaximumWealth function
         private static int MaximumWealth(int[,] accounts)
         {
             /* <Summary of logic>
@@ -223,7 +238,10 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
             {
                 throw;
             }
-        }
+        } // End of MaximumWealth function
+
+
+
         /*
  <summary>
 You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have.
@@ -243,7 +261,8 @@ Constraints:
 •	All the characters of jewels are unique.
 </summary>
  */
-            private static int NumJewelsInStones(string jewels, string stones)
+        //Start of NumJewelsInStones function
+        private static int NumJewelsInStones(string jewels, string stones)
         {
             /* <Summary of logic>
              the code loops through each character of the stone string and checks if the character is present in the jewels string. If it is present, the counter "stoneCount" is incremented by 1.
@@ -266,12 +285,13 @@ Constraints:
                 throw;
             }
 
-        }
+        } //End of NumJewelsInStones function
+
+
 
 
 
         /*
-
         <summary>
         Given a string s and an integer array indices of the same length.
         The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
@@ -282,6 +302,7 @@ Constraints:
         Output: "nihao"
         */
 
+        // Start of RestoreString function
         private static string RestoreString(string s, int[] indices)
         {
             /* <Summary of logic>
@@ -306,7 +327,9 @@ Constraints:
                 throw;
             }
 
-        }
+        } // End of RestoreString function
+
+
 
         /*
         <summary>
@@ -330,6 +353,7 @@ nums       index     target
 3            2        [0,1,3,2]
 4            1        [0,4,1,3,2]
 */
+        // Start of CreateTargetArray function
         private static int[] CreateTargetArray(int[] nums, int[] index)
         {
             /* <Summary of Logic>
@@ -354,6 +378,6 @@ nums       index     target
                 throw;
             }
 
-        }
+        } // End of CreateTargetArray function
     }
 }
