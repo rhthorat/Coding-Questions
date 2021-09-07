@@ -149,16 +149,20 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
             try
             {
                 /* <Summary of logic>
-                 looping through all lowercase letters of English alphabets to check if appear in the given sentence at least once. As we encounter the first occurence of a letter,
-                our boolean found becomes true and we break out of the foreach loop and we move on to check if next letter is present. If in case we do not find a particular letter of english alphabet in the sentence,
-                the boolean found remains false, which means we didn't find the letter in given sentence. As we could not find a particular letter of alphabets in the sentence, it shows that the sentence
-                is not a pangram and we do not have to continue through the for loop to check the presence of further letter. (Here we are checking with the ASCII values of the letter which goes from 97 to 122 for lowecase a to z)
+                 Looping through all lowercase letters of English alphabets (using their ASCII values) to check if it appears in the given sentence at least once.
+                As we encounter the first occurence of a letter, our boolean found becomes true and we break out of the foreach loop and as the letter was found we increment our counter.
+                Now we move on to check if next letter is present in the given sentence. If in case we do not find a particular letter of english alphabet in the sentence,
+                the boolean found remains false, which means we didn't find the letter in given sentence, thus the counter is not incremented.As we could not find a particular letter of
+                alphabets in the sentence, it shows that the sentence is not a pangram and we do not have to continue through the for loop to check the presence of further letter.
+                Finally if the index value is equal to 26 that shows we found all the english alphabets in the sentence.
+                (Here we are checking with the ASCII values of the letter which goes from 97 to 122 for lowecase a to z)
                 For example, if the given sentence is s = "vital". Then we start with i = 97 (ASCII value of a) and foreach loop loops through complete sentence "vital" to check if "a" is present in it.
-                As "a" is present in it,so found = true and flag = true and we continue to check if "b" is present in the sentence.
-                Now, as "b" is not in sentence "vital", found remains false and thus flag = false and we jump out of the main for loop to return false.
+                As "a" is present in it,so found = true and index in incremented by 1 and we continue to check if "b" is present in the sentence.
+                Now, as "b" is not in sentence "vital", so found = false and and we jump out of the main for loop to return false.
                  */
                 s = s.ToLower();
-                bool found = false, flag = false;
+                bool found = false;
+                int index = 0;
                 for (int i = 97; i <= 122; i++) // iterates through ASCII values of the a to z letters of alphabets
                 {
                     foreach (char c in s) { // iterates through each character of the given sentence
@@ -168,20 +172,28 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
                             break;
                         }
                         else
+                        {
+                            found = false;
                             continue;
+                        }
                     } //end of foreach loop
                     if (found) // if letter from alphabets was found in the sentence then continue the loop
                     {
-                        flag = true;
+                        index++;
                         continue;
                     }
                     else
                     {
-                        flag = false;
                         break;
                     }
                 }
-                return flag;
+                if (index == 26)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
