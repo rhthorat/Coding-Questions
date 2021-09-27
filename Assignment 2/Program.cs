@@ -41,9 +41,9 @@ namespace DIS_Assignment_2_Fall_2021
             int[] arr1 = { 1, 2, 2, 1, 1, 3 };
             bool unq = UniqueOccurrences(arr1);
             if (unq)
-                Console.WriteLine("Number of Occurences of each element are same");
+                Console.WriteLine("Number of Occurences of each element are unique");
             else
-                Console.WriteLine("Number of Occurences of each element are not same");
+                Console.WriteLine("Number of Occurences of each element are not unique");
 
             Console.WriteLine();
 
@@ -226,12 +226,16 @@ namespace DIS_Assignment_2_Fall_2021
         
         */
 
+        /*solution Summary:
+         *
+         *
+         */
         public static List<string> CommonChars(string[] words)
         {
             try
             {
-                List<string> commonwords = new List<string>();
                 List<int[]> countArray = new List<int[]>(words.Length);
+                List<string> common = new List<string>();
 
                 for (int i = 0; i < words.Length; i++)
                 {
@@ -265,10 +269,10 @@ namespace DIS_Assignment_2_Fall_2021
                     {
                         int charAsInt = 'a' + j;
                         char val = (char)charAsInt;
-                        commonwords.Add(val.ToString());
+                        common.Add(val.ToString());
                     }
                 }
-                return commonwords;
+                return common;
             }
             catch (Exception)
             {
@@ -345,7 +349,7 @@ namespace DIS_Assignment_2_Fall_2021
 
         */
 
-        /*
+        /* Solution Summary
          * Created a string array of ruleKeys according to its occurence in the given array. This is done so as per the rulekey index, its value from given array at that index will be matched.
          * For example, Input: items = [["phone","blue","pixel"],["computer","silver","phone"],["phone","gold","iphone"]], ruleKey = "type",  ruleValue = "phone"
          * Our ruleKey Array has values { "type", "color", "name" }. So as the ruleKey is "type", so index = 0. thus now we will have to check all the elements at index = 0 in each item of given array.
@@ -406,35 +410,27 @@ namespace DIS_Assignment_2_Fall_2021
         {
             try
             {
+                Array.Sort(nums);
                 int[] output = new int[2];
                 int i = 0;
                 int j = nums.Length - 1;
                 int sum;
 
-                if (nums.Length >= 2 && nums.Length <= 3 * 100000) //constraint 1
+                sum = nums[i] + nums[j];
+
+                while (sum != target)
                 {
+                    if (sum < target)
+                        i++;
+                    else
+                        j--;
+
                     sum = nums[i] + nums[j];
+                } //end of while loop
 
-                    if (nums[i] >= -1000 && nums[i] <= 1000)//constraint 2
-                    {
-                        Array.Sort(nums); //constraint 3 
-
-                        while (sum != target)
-                        {
-                            if (sum < target)
-                                i++;
-                            else
-                                j--;
-
-                            sum = nums[i] + nums[j];
-                        } //end of while loop
-
-                        output[0] = i + 1;
-                        output[1] = j + 1;
-                        Console.Write("[" + String.Join(",", output) + "]");
-
-                    }//end of constraint 2
-                } //end of constraint 1
+                output[0] = i + 1;
+                output[1] = j + 1;
+                Console.Write("[" + String.Join(",", output) + "]");
 
             }
             catch (Exception)
@@ -472,39 +468,24 @@ namespace DIS_Assignment_2_Fall_2021
             {
                 Dictionary<int, int> mydict = new Dictionary<int, int>();
 
-                if ((words.Length >= 1 && words.Length <= 100000) && (allowed.Length >= 1 && allowed.Length <= 26)) //Constraint 1, 2 and 3 
+                foreach (int letter in allowed)
                 {
-                    for (int i = 0; i < allowed.Length; i++) //constraint 4
+                    mydict.Add(letter, 0);
+                }
+                int count = 0, wordcount = 0;
+                foreach (var w in words)
+                {
+                    wordcount++;
+                    foreach (var k in w)
                     {
-                        for (int j = i + 1; j < allowed.Length; j++)
+                        if (mydict.ContainsKey(k) == false)
                         {
-                            if (allowed[i] == allowed[j])
-                                return 0;
-                            else
-                            {
-                                foreach (int letter in allowed)
-                                {
-                                    mydict.Add(letter, 0);
-                                }
-                                int count = 0, wordcount = 0;
-                                foreach (var w in words)
-                                {
-                                    wordcount++;
-                                    foreach (var k in w)
-                                    {
-                                        if (mydict.ContainsKey(k) == false)
-                                        {
-                                            count++;
-                                            break;
-                                        }
-                                    }
-                                }
-                                return wordcount - count;
-                            }
+                            count++;
+                            break;
                         }
-                    } //constraint 4 ends 
-                }//constraint 1, 2 and 3 ends 
-                return 0;
+                    }
+                }
+                return wordcount - count;
             }
             catch (Exception)
             {
