@@ -406,6 +406,12 @@ namespace DIS_Assignment_2_Fall_2021
 
         */
 
+        /*Solution Summary
+         *initially we keep starting index as i = 0 and last index as j = array length -1. Now we add 0th element and last element of given array. If the sum is equal to target, we add 1 to 
+         *indices i and j and return the values by joining them.
+         *If the sum is not equal to target, then we compare the sum and target value. if sum is less than target, that means our our value at i should be increased (as our array is ascendingly sorted).
+         *else if the sum is greater than target our element at j should be reduced. We add these values and compare it with target till we find the desired sum value (which is equal to target).
+         */
         public static void targetSum(int[] nums, int target)
         {
             try
