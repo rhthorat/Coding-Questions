@@ -121,6 +121,9 @@ namespace DIS_Assignment_2_Fall_2021
         */
 
         /* Solution Summary:
+         * We have 2 variables, individualGain to track the each of n+1 altitudes and maxGain to keep track of max among them. We loop through the gain array, and add consecutive elements,
+         * which will give us the altitude at that point (individualGain). If this value is greater than maxGain, the new maxGain will be individualGain, otherwise no change.
+         * This way we can get the highest altitude.
          */
         public static int LargestAltitude(int[] gain)
         {
@@ -226,10 +229,6 @@ namespace DIS_Assignment_2_Fall_2021
         
         */
 
-        /*solution Summary:
-         *
-         *
-         */
         public static List<string> CommonChars(string[] words)
         {
             try
@@ -256,16 +255,13 @@ namespace DIS_Assignment_2_Fall_2021
                 {
 
                     // find the minimum amount that each word has in common
-                    int minAmount = int.MaxValue;
+                    int minAmt = int.MaxValue;
                     for (int i = 0; i < words.Length; i++)
                     {
-                        minAmount = Math.Min(minAmount, countArray[i][j]);
+                        minAmt = Math.Min(minAmt, countArray[i][j]);
                     }
-
-
-
                     // add a new string for the minimum common occurances of current letter.
-                    for (int k = 0; k < minAmount; k++)
+                    for (int k = 0; k < minAmt; k++)
                     {
                         int charAsInt = 'a' + j;
                         char val = (char)charAsInt;
@@ -553,7 +549,12 @@ namespace DIS_Assignment_2_Fall_2021
         Output: 1
 
         */
-
+        /*Solution Summary:
+         * initially we keep maxSum and Sum as 0. Then we loop through the given array and add one element at a time to sum. After adding a element to the sum, we check if sum is a non-negative
+         * number. If it is we assign sum back to 0. else if sum is non-negative, we further check if it is greater than maxSum, if yes our new maxSum becomes equal to sum. This way maxSum is used to
+         * hold maximum sum got so far and sum is used to keep track of addition of each element of array.
+         *Once we loop through all elements of the array, we get largest sum as maxSum and we return it.
+         */
         
         public static int MaximumSum(int[] arr)
         {
@@ -580,7 +581,6 @@ namespace DIS_Assignment_2_Fall_2021
         }
 
         /*
-         
         Question 10:
 
         Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray [nums[l], nums[l+1], ..., nums[r-1], nums[r]] of which the sum is greater than or equal to target. If there is no such subarray, return 0 instead.
