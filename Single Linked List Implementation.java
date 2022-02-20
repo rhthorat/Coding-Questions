@@ -61,7 +61,7 @@ class Main {
   }
 
   public void removeFirst() {
-    //if linked list is empty
+    // if linked list is empty
     if (head == null) {
       System.out.println("The list is empty");
       return;
@@ -75,20 +75,20 @@ class Main {
 
   public void removeLast() {
 
-    //if linked list is empty
+    // if linked list is empty
     if (head == null) {
       System.out.println("The list is empty");
       return;
     }
 
-    //if linked list has only 1 element
+    // if linked list has only 1 element
     if (head.next == null) {
       head = null;
       size--;
       return;
     }
 
-    //if linked list has elements more than 1
+    // if linked list has elements more than 1
     Node secLastNode = head;
     Node lastNode = head.next;
     while (lastNode.next != null) {
