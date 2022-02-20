@@ -2,7 +2,7 @@ import java.util.*;
 
 class Main {
 
-  Node head;
+  public static Node head;
   int size;
 
   Main () {
