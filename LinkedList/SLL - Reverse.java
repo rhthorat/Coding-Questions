@@ -1,16 +1,18 @@
-/**
- * Definition for singly-linked list.
-*/
- public class ListNode {
+class Main {
+    public static class ListNode {
      int val;
      ListNode next;
      ListNode() {}
-     ListNode(int val) { this.val = val; }
-     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     ListNode(int val) { 
+       this.val = val; 
+       this.next = null;
+     }
+     ListNode(int val, ListNode next) { 
+       this.val = val;     
+     this.next = next;
+     }
  }
- 
-class Solution {
-    public ListNode reverseList(ListNode head) {
+    public static ListNode reverseList(ListNode head) {
         //if input is empty i.e. []
         if (head == null)
             return head;
@@ -40,4 +42,16 @@ class Solution {
         return p;
         //Recursive solution ends here
     }
+  public static void main(String[] args) {
+    ListNode node = new ListNode(1);
+    node.next = new ListNode(4);
+    node.next.next = new ListNode(3);
+    node.next.next.next = new ListNode(2);
+    node.next.next.next.next = new ListNode(7);
+    ListNode p = reverseList(node);
+    while (p != null) {
+      System.out.print(p.val + " -> ");
+      p = p.next;
+    }
+  }
 }
