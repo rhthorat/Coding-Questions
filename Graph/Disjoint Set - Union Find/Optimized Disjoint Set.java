@@ -31,10 +31,10 @@ class UnionFind {
         if (rootX != rootY) {
             if (rank[rootX] > rank[rootY]) {
                 root[rootY] = rootX;
-                //rank[rootX] += 1;
+                rank[rootX] += 1;
             } else if (rank[rootX] < rank[rootY]) {
                 root[rootX] = rootY;
-                //rank[rootY] += 1;
+                rank[rootY] += 1;
             } else {
                 root[rootY] = rootX;
                 rank[rootX] += 1;
